@@ -73,6 +73,7 @@ export default {
   methods:{
     baseFunc(e){
       console.log('usama')
+      console.log('hamza')
            let file= e.target.files[0]
            let reader= new FileReader()
            reader.onload= ()=>{
