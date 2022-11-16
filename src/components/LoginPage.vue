@@ -75,7 +75,8 @@ export default {
                   }).then((res)=> res.json()).then((data)=> {
                     
                     if(data){
-                       localStorage.setItem('token', JSON.stringify(data.token))
+                       localStorage.setItem('token', data.token)
+                       localStorage.setItem('me', JSON.stringify(data.user))
                        this.$router.push('/Home')
                     }
                   })

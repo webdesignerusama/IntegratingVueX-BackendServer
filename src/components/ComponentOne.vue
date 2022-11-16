@@ -82,13 +82,14 @@ export default {
        }
        },
      mounted(){
+        const user = JSON.parse(localStorage.getItem('me'))
            fetch('http://localhost:3000/findUser',{
             method:"POST",
             headers:{
                 'Content-type':'application/json',
-                 'Authorization':'Bearer '+ JSON.parse(localStorage.getItem('token'))
+                 'Authorization':'Bearer '+ localStorage.getItem('token')
             },
-            body:JSON.stringify({id:1}),
+            body:JSON.stringify({id:user.id}),
            }).then(res=> res.json()).then(data=> {
             console.log(data.user.last_name)
             this.firstName= data.user.first_name

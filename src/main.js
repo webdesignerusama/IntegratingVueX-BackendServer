@@ -43,16 +43,17 @@ import vuetify from './plugins/vuetify'
 const app = createApp(App)
 const router= createRouter({
   history: createWebHistory(),
-  routes:[{path:'/', component:LoginPage, meta:{requireUnAuth:true}},
+  routes:[
+  {path:'/', component:LoginPage, meta:{requireUnAuth:true}},
   {path:'/signUpPage',component:SignUpPage,meta:{requireUnAuth:true}},
   {path:'/Home', component:Home, meta: {requireAthentication:true}},
   {path:'/secondhome/:id/:title', component:SecondHome, meta:{requireAthentication:true}} 
-
+  
 ]
 })
 
 router.beforeEach((to,_,next)=>{
-  let validity= JSON.parse(localStorage.getItem('token'))
+  let validity= localStorage.getItem('token')
   if(to.meta.requireAthentication && !validity){
       next('/signUpPage')
   }else if(to.meta.requireAthentication && validity){
