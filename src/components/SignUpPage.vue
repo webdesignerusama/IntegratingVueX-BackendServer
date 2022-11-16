@@ -72,6 +72,7 @@ export default {
   },
   methods:{
     baseFunc(e){
+      console.log('usama')
            let file= e.target.files[0]
            let reader= new FileReader()
            reader.onload= ()=>{
